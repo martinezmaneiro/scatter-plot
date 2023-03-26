@@ -40,7 +40,11 @@ let generateScales =()=> {
 
 //draws the x and y axes in the graph
 let generateAxes =()=> {
-    xAxis = d3.axisBottom(xScale);
+    xAxis = d3.axisBottom(xScale)
+            //applies format to ticks to get rid of the comma
+                .tickFormat(d3.format('d'));
+
+
     yAxis = d3.axisLeft(yScale);
 
     svg.append('g')
