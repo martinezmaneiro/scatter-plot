@@ -78,6 +78,7 @@ let drawPoint =()=> {
         .attr('data-yvalue', (item) => {return new Date(item['Seconds']*1000)})
         //sets data values to their position on the x axis
         .attr('cx', (item) => {return xScale(item['Year'])})
+        .attr('cy', (item) => {return yScale(new Date(item['Seconds']*1000))})
 };
 
 //fetching JSON data
