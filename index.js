@@ -11,30 +11,34 @@ let width = 800;
 let height = 600;
 let padding = 40;
 
+//reference to the position of values in x and y graph
+let xScale;
+let yScale;
+
+//axes
+let xAxis;
+let yAxis;
+
 //draws canvas with the dimensions set above
 let drawCanvas =()=> {
     svg.attr('width', width)
     svg.attr('height', height)
 };
 
-//reference to the position of values in x and y graph
-let xScale;
-let yScale;
-
 //sets xScale to linear scales
 let generateScales =()=> {
     xScale = d3.scaleLinear()
                 .range([padding, width - padding])
-                .attr('transform', 'translate(0, ' + (height - padding) +')')
 };
 
 //draws the x axis in the graph
 let generateAxes =()=> {
-    let xAxis = d3.axisBottom(xScale);
+    xAxis = d3.axisBottom(xScale);
 
     svg.append('g')
         .call(xAxis)
-        .attr('id', 'x-axis');
+        .attr('id', 'x-axis')
+        .attr('transform', 'translate(0, ' + (height - padding) +')');
 };
 
 //fetching JSON data
