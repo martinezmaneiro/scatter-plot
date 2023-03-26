@@ -36,3 +36,9 @@ svg {
     border: solid black 1px;
     border-radius: 5px
 }
+
+#tooltip{
+    visibility: hidden;
+    width: auto;
+    height: auto;
+}

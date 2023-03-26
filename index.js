@@ -5,6 +5,7 @@ let values = [];
 
 //refering svg from html
 let svg = d3.select('svg');
+let tooltip = d3.select('#tooltip');
 
 //svg dimensions
 let width = 800;
@@ -86,6 +87,11 @@ let drawPoint =()=> {
             }else{
                 return 'lightgreen'
             }
+        })
+        //sets tooltip visibility on when mouse is over the dot
+        .on('mouseover', (item) => {
+            tooltip.transition()
+                    .style('visibility', 'visible')
         })
 };
 
