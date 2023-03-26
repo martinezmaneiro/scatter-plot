@@ -35,6 +35,11 @@ let generateScales =()=> {
                 })])
                 .range([padding, width - padding]);
     yScale = d3.scaleTime()
+                .domain([d3.min(values, (item) => {
+                    return new Date(item['Seconds'] *1000)
+                }), d3.max(values, (item) => {
+                    return new Date(item['Seconds']*1000)
+                })])
                 .range([padding, height - padding])
 };
 
@@ -45,7 +50,9 @@ let generateAxes =()=> {
                 .tickFormat(d3.format('d'));
 
 
-    yAxis = d3.axisLeft(yScale);
+    yAxis = d3.axisLeft(yScale)
+            //applies format to ticks in form of min:sec
+                .tickFormat(d3.timeFormat('%M:%S'))
 
     svg.append('g')
         .call(xAxis)
@@ -69,6 +76,8 @@ let drawPoint =()=> {
         .attr('data-xvalue', (item) => {return item['year']})
         //s => ms converter used to get new date object
         .attr('data-yvalue', (item) => {return new Date(item['Seconds']*1000)})
+        //sets data values to their position on the x axis
+        .attr('cx', (item) => {return xScale(item['Year'])})
 };
 
 //fetching JSON data
