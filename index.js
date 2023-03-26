@@ -49,6 +49,16 @@ let generateAxes =()=> {
         .attr('transform', 'translate(' + padding + ', 0)');
 };
 
+//draws the circled values in the graph
+let drawPoint =()=> {
+    svg.selectAll('circle')
+        .data(values)
+        .enter()
+        .append('circle')
+        .attr('class', 'dot')
+        .attr('r', '5')
+};
+
 //fetching JSON data
 req.open('GET', url, true);
 req.onload =()=> {
@@ -56,6 +66,7 @@ req.onload =()=> {
     drawCanvas();
     generateScales();
     generateAxes();
+    drawPoint();
 }
 req.send()
 
