@@ -9,3 +9,10 @@ req.onload =()=> {
 }
 req.send()
 
+//svg dimensions
+let width = 800;
+let height = 600;
+let padding = 40;
+
+
+
