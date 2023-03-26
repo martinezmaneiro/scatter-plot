@@ -28,12 +28,22 @@ let generateScales =()=> {
                 .attr('transform', 'translate(0, ' + (height - padding) +')')
 };
 
+//draws the x axis in the graph
+let generateAxes =()=> {
+    let xAxis = d3.axisBottom(xScale);
+
+    svg.append('g')
+        .call(xAxis)
+        .attr('id', 'x-axis');
+};
+
 //fetching JSON data
 req.open('GET', url, true);
 req.onload =()=> {
     values = JSON.parse(req.responseText)
     drawCanvas();
     generateScales();
+    generateAxes();
 }
 req.send()
 
