@@ -79,6 +79,14 @@ let drawPoint =()=> {
         //sets data values to their position on the x axis
         .attr('cx', (item) => {return xScale(item['Year'])})
         .attr('cy', (item) => {return yScale(new Date(item['Seconds']*1000))})
+        //conditional styling of dots according to item['Doping']
+        .attr('fill', (item) => {
+            if(item['Doping'] != ''){
+                return 'red'
+            }else{
+                return 'lightgreen'
+            }
+        })
 };
 
 //fetching JSON data
