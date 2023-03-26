@@ -25,10 +25,12 @@ let drawCanvas =()=> {
     svg.attr('height', height)
 };
 
-//sets xScale to linear scales
+//sets xScale and yScale to linear & time scales
 let generateScales =()=> {
     xScale = d3.scaleLinear()
-                .range([padding, width - padding])
+                .range([padding, width - padding]);
+    yScale = d3.scaleTime()
+                .range([padding, height - padding])
 };
 
 //draws the x axis in the graph
