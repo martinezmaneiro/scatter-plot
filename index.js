@@ -57,6 +57,9 @@ let drawPoint =()=> {
         .append('circle')
         .attr('class', 'dot')
         .attr('r', '5')
+        .attr('data-xvalue', (item) => {return item['year']})
+        //s => ms converter used to get new date object
+        .attr('data-yvalue', (item) => {return new Date(item['Seconds']*1000)})
 };
 
 //fetching JSON data
