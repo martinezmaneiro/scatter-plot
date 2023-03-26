@@ -95,6 +95,7 @@ let drawPoint =()=> {
             if(item['Doping'] != ''){
                 tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + item['Doping'])}
                 else{tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + 'No allegations')}
+            tooltip.attr('data-year', item['Year'])
             })
         .on('mouseout', (item) => {
             tooltip.transition()
