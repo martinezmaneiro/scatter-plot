@@ -89,11 +89,18 @@ let drawPoint =()=> {
             }
         })
         //sets tooltip visibility on when mouse is over the dot
-        .on('mouseover', (item) => {
+        .on('mouseover', (e, item) => {
             tooltip.transition()
                     .style('visibility', 'visible')
+            if(item['Doping'] != ''){
+                tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + item['Doping'])}
+                else{tooltip.text(item['Year'] + ' - ' + item['Name'] + ' - ' + item['Time'] + ' - ' + 'No allegations')}
+            })
+        .on('mouseout', (item) => {
+            tooltip.transition()
+                    .style('visibility', 'hidden')
         })
-};
+}
 
 //fetching JSON data
 req.open('GET', url, true);
