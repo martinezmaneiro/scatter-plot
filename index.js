@@ -17,10 +17,6 @@ let drawCanvas =()=> {
     svg.attr('height', height)
 };
 
-//reference to the position of values in x and y graph
-let xScale;
-let yScale;
-
 //fetching JSON data
 req.open('GET', url, true);
 req.onload =()=> {
