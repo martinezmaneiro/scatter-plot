@@ -17,11 +17,23 @@ let drawCanvas =()=> {
     svg.attr('height', height)
 };
 
+//reference to the position of values in x and y graph
+let xScale;
+let yScale;
+
+//sets xScale to linear scales
+let generateScales =()=> {
+    xScale = d3.scaleLinear()
+                .range([padding, width - padding])
+                .attr('transform', 'translate(0, ' + (height - padding) +')')
+};
+
 //fetching JSON data
 req.open('GET', url, true);
 req.onload =()=> {
     values = JSON.parse(req.responseText)
     drawCanvas();
+    generateScales();
 }
 req.send()
 
